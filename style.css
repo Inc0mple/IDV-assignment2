@@ -1,0 +1,89 @@
+/* Basic page styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  padding: 1em 0 0.5em;
+  margin: 0;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Container for each example */
+.example-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.text-column {
+  flex: 1;
+  max-width: 500px;
+  padding-right: 10px;
+}
+
+.image-column {
+  flex: 1.5;
+  min-width: 300px;
+}
+
+/* Wrapping the image + overlay */
+.image-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px; /* Limit how large the image can get */
+  overflow: hidden;
+}
+
+/* Make the image scale up to fill container's width, but maintain aspect ratio */
+.image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* The overlaid SVG that will show highlights, same size as the image */
+.overlay-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so mouse events go "through" to the image if needed */
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+ul {
+  padding-left: 20px;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+/* Critique bullet styling */
+.critique-point {
+  margin-bottom: 0.5em;
+  cursor: pointer;
+}
+.critique-point:hover {
+  background-color: #fcf8e3;
+  transition: background-color 0.3s;
+}

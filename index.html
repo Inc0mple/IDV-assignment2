@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Visualisation Critiques</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Include D3.js from a CDN -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <h1 style="color: #333; text-shadow: 1px 1px 2px #ccc;">Data Visualisation Critiques</h1>
+
+  <!-- Example 1 Container -->
+  <div class="example-container">
+    <div class="text-column">
+      
+      <h2 style="color: #2c3e50;">Example 1: <span style="font-weight: bolder;">Oil Production by Country in 2021</span></h2>
+
+      <h3 style="color: #555;">Context</h3>
+      <p>
+        The visualisation presents global oil production during the 
+        <strong style="color: #d9534f;">2021 oil crisis</strong>, displaying production volumes 
+        (<em>thousand barrels per day</em>) by country within a stylised 
+        <span style="color: #337ab7; font-weight: bold;">Voronoi diagram</span> with supplementary pictograms 
+        at the bottom showing regional totals. 
+        <span style="color: #5cb85c; font-weight: bold;">OPEC producers</span> are highlighted in blue whilst 
+        <span style="color: #f0ad4e; font-weight: bold;">non-OPEC producers</span> appear grey. 
+        The visualisation appears to target a <mark style="background-color: #ffeeba;">general audience</mark> 
+        rather than specialists, prioritising visual impact over analytical utility.
+      </p>
+
+      <h4 style="font-style: italic; color: #888;">
+        <i>Mouse-over the following critiques to highlight the corresponding regions in the visualisation.</i>
+      </h4>
+
+      <h3 style="color: #555;">Data &amp; Idiom Issues</h3>
+      <ul>
+        <li class="critique-point" data-target="oil-region1" style="margin-bottom: 1em;">
+          <strong style="color: #c7254e;">Ineffective Visual Encoding:</strong> Voronoi cells use area 
+          (<strong>Cleveland &amp; McGill's accuracy hierarchy</strong>) projected onto a curved barrel surface. 
+          This undermines <span style="font-weight: bold; color: #e67e22;">precise comparison</span> between 
+          similar-sized producers whilst rendering smaller producers nearly invisible, limiting the visualisation 
+          to merely identifying the <span style="text-decoration: underline;">largest contributors</span>.
+          <ul>
+            <li style="margin-top: 0.5em;">
+              For example, when looking at the main visualisation, it is not immediately clear 
+              which region is the <strong>biggest oil producer</strong> (<span style="font-weight: bold; color: #e62222;">Middle-East</span>).
+            </li>
+          </ul>
+        </li>
+
+        <li class="critique-point" data-target="oil-region2" style="margin-bottom: 1em;">
+          <strong style="color: #c7254e;">Limited Functionality:</strong> Supports only 
+          <mark style="background-color: #fcf8e3;">"Browse" tasks</mark> for top producers whilst failing at 
+          <mark style="background-color: #fcf8e3;">"Lookup" tasks</mark> for smaller producers; regional comparisons 
+          require consulting the <em>secondary visualisation</em> rather than being discernible from the primary one.
+          <ul>
+            <li style="margin-top: 0.5em;">
+              For example, it is almost impossible to find 
+              “<strong style="color: #2822d5;">Romania</strong>” or 
+              “<strong style="color: #01a411;">Malaysia</strong>” at a glance.
+            </li>
+          </ul>
+        </li>
+        <li class="critique-point" data-target="oil-region3" style="margin-bottom: 1em;">
+          <strong style="color: #c7254e;">Visual Clutter:</strong> The dominant barrel graphic and <strong>large disparity 
+          in font and marker sizes</strong> create <em>unnecessary complexity</em> while the separate regional pictogram 
+          forces <strong>unnecessary eye movement</strong>, fragmenting the viewing experience.
+          <ul>
+            <li style="margin-top: 0.5em;">
+              For example, the <strong style="color: #a75208;">visually distinct yet cluttered oil barrel graphic increases cognitive load</strong>, 
+              and it is <strong style="color: #0e09a8;">not obvious at a glance that information on regional production is captured at the bottom</strong>.
+            </li>
+          </ul>
+        </li>
+
+        <li class="critique-point" data-target="oil-region4" style="margin-bottom: 1em;">
+          <strong style="color: #c7254e;">Spatial Disconnection and Lack of Regional Labelling:</strong> 
+          Country positioning within bolded borders does not encode meaningful geographical information. 
+          Furthermore, <span style="font-weight: bold; color: #e74c3c;">regions are not explicitly labelled</span> 
+          in the main visualisation, necessitating <u>pre-existing geographical knowledge</u> from viewers.
+          <ul>
+            <li style="margin-top: 0.5em;">
+              For example, if one’s geographical knowledge is lacking, one may not know which 
+              set of countries belong to the 
+              <mark style="background-color: #ffd8a8;">CIS region</mark>.
+            </li>
+          </ul>
+        </li>
+
+        
+      </ul>
+
+      <h3 style="color: #555;">Ways to Improve</h3>
+      <ul>
+        <li>
+          <strong style="color: #5cb85c;">Adopt Appropriate Idiom:</strong> Replace the 
+          <span style="color: #337ab7; font-weight: bold;">Voronoi diagram</span> with a 
+          <mark style="background-color: #d9edf7;">hierarchical treemap</mark> or 
+          <mark style="background-color: #d9edf7;">sorted horizontal bar chart</mark> to improve 
+          quantitative comparison whilst preserving part-whole relationships.
+        </li>
+        <li>
+          <strong style="color: #5cb85c;">Enhance Information Context:</strong> Integrate 
+          regional information through consistent <span style="font-weight: bold;">colour-coding</span> 
+          with explicit labels; add layers showing 
+          <em>reserves-to-production ratios</em> and historical trends.
+        </li>
+        <li>
+          <strong style="color: #5cb85c;">Streamline Visual Design:</strong> Eliminate decorative 
+          elements, simplify OPEC indicators (perhaps by position rather than colour), and develop 
+          a coherent visual hierarchy that consolidates <u>regional information</u> into the 
+          primary visualisation.
+        </li>
+        <li>
+          <strong style="color: #5cb85c;">Add Focused Interactivity:</strong> Implement filtering 
+          by region/OPEC status with tooltips providing additional context; include a 
+          <span style="font-weight: bold;">geographic minimap</span> to restore spatial relationships 
+          whilst maintaining focus on production volumes.
+        </li>
+      </ul>
+    </div>
+
+    <div class="image-column">
+      <div class="image-wrapper">
+        <img
+          id="oilProductionImage"
+          src="images/oil.jpg"
+          alt="Oil Production Visualization"
+        >
+        <!-- The SVG overlay for drawing shapes with D3 -->
+        <svg id="oilOverlay" class="overlay-svg"></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 2 Container -->
+  <div class="example-container">
+    <div class="text-column">
+      <h2 style="color: #2c3e50;">Example 2: <span style="font-weight: bolder;">Number of Workers in U.S. Startups Since 1994</span></h2>
+
+      <h3 style="color: #555;">Context</h3>
+      <p>
+        This visualisation, published in <strong style="color: #d9534f;">February 2025</strong>, 
+        presents a <u>line graph</u> tracking the average number of workers at American startups 
+        in their first year from 1994 to 2023, based on 
+        <span style="font-weight: bold; color: #337ab7;">Bureau of Labor Statistics data</span>. 
+        The design features a <em>deep purple background</em> with a 
+        <mark style="background-color: #f9f2f4; color: #c7254e;">gradient-coloured line</mark> 
+        (light blue to soft violet to magenta). Notable companies 
+        (<strong>Google, Facebook, Uber, and Perplexity</strong>) are highlighted with logo icons 
+        connected to their founding years via perforated lines, accompanied by text about their 
+        initial employee counts. The visualisation aims to show the trend of 
+        <strong>decreasing average worker numbers</strong> at startup founding.
+      </p>
+      <h4 style="font-style: italic; color: #888;">
+        <i>Mouse-over the following critiques to highlight the corresponding regions in the visualisation.</i>
+      </h4>
+
+      <h3 style="color: #555;">Data &amp; Idiom Issues</h3>
+      <ul>
+        <li class="critique-point" data-target="startup-region1" style="margin-bottom: 1em;">
+          <strong style="color: #c7254e;">Misleading Positional Encoding:</strong> The y-position of 
+          company logos bears no relation to their actual employee counts, creating significant 
+          <u>cognitive dissonance</u>.
+          <ul>
+            <li style="margin-top: 0.5em;">
+              For instance, <strong style="color: #d9534f;">Google's logo</strong> appears at y-value 5 
+              despite text stating it started with 3 employees; 
+              <strong style="color: #d9534f;">Facebook</strong> at y-value 2.5 despite having 5 initial employees.
+            </li>
+          </ul>
+        </li>
+        <li class="critique-point" data-target="startup-region2" style="margin-bottom: 1em;">
+          <strong style="color: #c7254e;">Decorative Elements Without Meaning:</strong> The line's 
+          colour gradient and variable thickness add visual complexity without encoding any data, 
+          violating the principle that <em>visual variables</em> should represent meaningful information 
+          rather than serve purely decorative purposes.
+        </li>
+        <li class="critique-point" data-target="startup-region3" style="margin-bottom: 1em;">
+          <strong style="color: #c7254e;">Truncated Y-Axis:</strong> Starting the y-axis at 2 instead of 0 
+          visually exaggerates the slope of decline, potentially <span style="color: #e74c3c;">misleading viewers</span> 
+          about the magnitude of change in average worker numbers over the time period.
+        </li>
+      </ul>
+
+      <h3 style="color: #555;">Ways to Improve</h3>
+      <ul>
+        <li>
+          <strong style="color: #5cb85c;">Align Visual Position with Data Values:</strong> Place company 
+          logos at their correct y-positions corresponding to their actual initial employee counts, ensuring 
+          <span style="text-decoration: underline;">visual consistency</span> with the accompanying text and 
+          reinforcing data accuracy.
+        </li>
+        <li>
+          <strong style="color: #5cb85c;">Simplify Visual Design:</strong> Remove the meaningless gradient 
+          and variable line thickness, replacing them with a <mark style="background-color: #d9edf7;">consistent 
+          line style</mark> that allows viewers to focus on the data trend rather than decorative elements.
+        </li>
+        <li>
+          <strong style="color: #5cb85c;">Extend Y-Axis to Zero:</strong> Consider starting the y-axis at 0 
+          to provide an honest visual representation of the <em>proportional change</em> in worker numbers, 
+          allowing viewers to accurately gauge the <span style="color: #e67e22;">magnitude of the decline</span>.
+        </li>
+        <li>
+          <strong style="color: #5cb85c;">Improve Data Labelling:</strong> Add consistent data points for key 
+          years and clear annotations for significant economic events (<em>dot-com bubble</em>, 
+          <em>2008 financial crisis</em>, <em>pandemic</em>) that may have influenced the trend, 
+          enhancing contextual understanding.
+        </li>
+        <li>
+          <strong style="color: #5cb85c;">Use Colour Purposefully:</strong> Apply colour to encode meaningful 
+          information such as economic periods or to distinguish between different industry sectors if such 
+          data is available, rather than for purely aesthetic purposes.
+        </li>
+      </ul>
+    </div>
+
+    <div class="image-column">
+      <div class="image-wrapper">
+        <img
+          id="startupImage"
+          src="images/startup.webp"
+          alt="Startup Workers Visualization"
+        >
+        <svg id="startupOverlay" class="overlay-svg"></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our custom script that references D3 for overlays -->
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visual Critiques</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Data Visualization Critiques</h1>
+
+  <!-- Example 1 Container -->
+  <div class="example-container">
+    <div class="text-column">
+      <h2>Example 1: Oil Production by Country in 2021</h2>
+      <h3>Context</h3>
+      <p>
+        The visualisation presents global oil production during the 2021 oil crisis, 
+        displaying production volumes (thousand barrels per day) by country within a 
+        stylised oil barrel graphic...
+      </p>
+
+      <h3>Data &amp; Idiom Issues</h3>
+      <ul>
+        <li class="critique-point" data-target="oil-region1">
+          <strong>Ineffective Visual Encoding:</strong> Voronoi cells use area...
+        </li>
+        <li class="critique-point" data-target="oil-region2">
+          <strong>Limited Functionality:</strong> Supports only “Browse” tasks...
+        </li>
+        <li class="critique-point" data-target="oil-region3">
+          <strong>Spatial Disconnection:</strong> The arbitrary positioning...
+        </li>
+        <li class="critique-point" data-target="oil-region4">
+          <strong>Visual Clutter:</strong> The dominant barrel graphic...
+        </li>
+      </ul>
+
+      <h3>Ways to Improve</h3>
+      <ul>
+        <li>Adopt Appropriate Idiom: Replace the voronoi diagram...</li>
+        <li>Enhance Information Context: Integrate regional information...</li>
+        <li>Streamline Visual Design: Eliminate decorative elements...</li>
+        <li>Add Focused Interactivity: Implement filtering by region...</li>
+      </ul>
+    </div>
+
+    <div class="image-column">
+      <div class="image-wrapper">
+        <!-- Update to your actual image path; e.g. images/oil.jpg -->
+        <img 
+          id="oilProductionImage" 
+          src="images/oil.jpg" 
+          alt="Oil Production Visualization"
+        >
+        <svg id="oilOverlay" class="overlay-svg"></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 2 Container -->
+  <div class="example-container">
+    <div class="text-column">
+      <h2>Example 2: Number of Workers in U.S. Startups Since 1994</h2>
+      <h3>Context</h3>
+      <p>
+        This visualisation, published in February 2025, presents a line graph...
+      </p>
+
+      <h3>Data &amp; Idiom Issues</h3>
+      <ul>
+        <li class="critique-point" data-target="startup-region1">
+          <strong>Misleading Positional Encoding:</strong> The y-position...
+        </li>
+        <li class="critique-point" data-target="startup-region2">
+          <strong>Decorative Elements Without Meaning:</strong> The line's colour...
+        </li>
+        <li class="critique-point" data-target="startup-region3">
+          <strong>Truncated Y-Axis:</strong> Starting the y-axis at 2 instead of 0...
+        </li>
+      </ul>
+
+      <h3>Ways to Improve</h3>
+      <ul>
+        <li>Align Visual Position with Data Values...</li>
+        <li>Simplify Visual Design...</li>
+        <li>Extend Y-Axis to Zero...</li>
+        <li>Improve Data Labelling...</li>
+        <li>Use Colour Purposefully...</li>
+      </ul>
+    </div>
+
+    <div class="image-column">
+      <div class="image-wrapper">
+        <!-- Update to your actual image path; e.g. images/startup.webp -->
+        <img 
+          id="startupImage" 
+          src="images/startup.webp" 
+          alt="Startup Workers Visualization"
+        >
+        <svg id="startupOverlay" class="overlay-svg"></svg>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
