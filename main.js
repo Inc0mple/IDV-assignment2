@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
           { x: 242, y: 689 },
           { x: 242, y: 764 },
           { x: 488, y: 1010 },
+          { x: 748, y: 940 },
           { x: 957, y: 836 },
           { x: 957, y: 689 },
         ],
@@ -42,8 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
         shape: "polygon",
         points: [
           { x: 488, y: 1010 },
+          { x: 748, y: 940 },
           { x: 957, y: 836 },
           { x: 957, y: 1300 },
+          { x: 805, y: 1388 },
           { x: 655, y: 1442 },
           { x: 441, y: 1105 },
         ],
@@ -54,26 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
       
     ],
     "oil-region2": [
-      {
-        shape: "circle",
-        x: 995,
-        y: 1396,
-        r: 45,
-        fillColor: "rgba(0, 0, 255, 0.05)",
-        strokeColor: "blue",
-        strokeWidth: 2
-      },
-      {
-        shape: "circle",
-        x: 553,
-        y: 453,
-        r: 45,
-        fillColor: "rgba(0, 255, 0, 0.05)",
-        strokeColor: "green",
-        strokeWidth: 2
-      },
-    ],
-    "oil-region3": [
       {
         shape: "rect",
         x: 43,
@@ -95,13 +78,36 @@ document.addEventListener("DOMContentLoaded", () => {
         strokeWidth: 2
       },
     ],
+    "oil-region3": [
+      {
+        shape: "circle",
+        x: 995,
+        y: 1396,
+        r: 45,
+        fillColor: "rgba(0, 0, 255, 0.05)",
+        strokeColor: "blue",
+        strokeWidth: 2
+      },
+      {
+        shape: "circle",
+        x: 553,
+        y: 453,
+        r: 45,
+        fillColor: "rgba(0, 255, 0, 0.05)",
+        strokeColor: "green",
+        strokeWidth: 2
+      },
+    ],
     "oil-region4": [
       
       {
         shape: "polygon",
         points: [
           { x: 242, y: 1091 },
-          { x: 242, y: 1445 },
+          { x: 242, y: 1420 },
+          { x: 293, y: 1460 },
+          { x: 375, y: 1480 },
+          { x: 459, y: 1495 },
           { x: 635, y: 1497 },
           { x: 655, y: 1441 },
           { x: 440, y: 1104 },
@@ -128,8 +134,18 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 725,
         width: 60,
         height: 60,
-        fillColor: "rgba(255, 183, 0, 0.05)",
-        strokeColor: "orange",
+        fillColor: "rgba(0, 255, 17, 0.05)",
+        strokeColor: "lightgreen",
+        strokeWidth: 2
+      },
+      {
+        shape: "rect",
+        x: 312,
+        y: 602,
+        width: 70,
+        height: 30,
+        fillColor: "rgba(0, 255, 17, 0.05)",
+        strokeColor: "lightgreen",
         strokeWidth: 2
       },
       {
@@ -144,12 +160,32 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         shape: "rect",
+        x: 744,
+        y: 1090,
+        width: 50,
+        height: 30,
+        fillColor: "rgba(255, 183, 0, 0.05)",
+        strokeColor: "orange",
+        strokeWidth: 2
+      },
+      {
+        shape: "rect",
         x: 603,
         y: 865,
         width: 60,
         height: 60,
-        fillColor: "rgba(255, 183, 0, 0.05)",
-        strokeColor: "orange",
+        fillColor: "rgba(34, 0, 255, 0.05)",
+        strokeColor: "white",
+        strokeWidth: 2
+      },
+      {
+        shape: "rect",
+        x: 554,
+        y: 835,
+        width: 49,
+        height: 30,
+        fillColor: "rgba(34, 0, 255, 0.05)",
+        strokeColor: "white",
         strokeWidth: 2
       },
       {
@@ -158,8 +194,18 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 680,
         width: 60,
         height: 60,
-        fillColor: "rgba(255, 183, 0, 0.05)",
-        strokeColor: "orange",
+        fillColor: "rgba(255, 0, 234, 0.05)",
+        strokeColor: "pink",
+        strokeWidth: 2
+      },
+      {
+        shape: "rect",
+        x: 887,
+        y: 693,
+        width: 55,
+        height: 30,
+        fillColor: "rgba(255, 0, 234, 0.05)",
+        strokeColor: "pink",
         strokeWidth: 2
       },
     ],
@@ -170,14 +216,14 @@ document.addEventListener("DOMContentLoaded", () => {
           { x: 21, y: 220 },
           { x: 288, y: 216 },
           { x: 625, y: 646 },
-          { x: 1160, y: 893 },
-          { x: 1160, y: 1098 },
+          { x: 1180, y: 893 },
+          { x: 1180, y: 1110 },
           { x: 489, y: 771 },
-          { x: 282, y: 496 },
-          { x: 21, y: 496 },
+          { x: 282, y: 450 }, // prev y is 496
+          { x: 21, y: 450 }, // prev y is 496
         ],
         fillColor: "rgba(255, 183, 0, 0.05)", 
-        strokeColor: "orange",
+        strokeColor: "yellow",
         strokeWidth: 3
       }
     ],
@@ -188,9 +234,9 @@ document.addEventListener("DOMContentLoaded", () => {
         y: 1245,
         width: 65,
         height: 65,
-        fillColor: "rgba(255, 183, 0, 0.05)",
-        strokeColor: "orange",
-        strokeWidth: 2
+        fillColor: "rgba(255, 234, 0, 0.05)",
+        strokeColor: "white",
+        strokeWidth: 3
       }
     ],
   };
