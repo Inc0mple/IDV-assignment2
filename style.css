@@ -27,8 +27,8 @@ h1 {
 
 .text-column {
   flex: 1;
-  max-width: 500px;
-  padding-right: 10px;
+  max-width: 700px;
+  padding-right: 5px;
 }
 
 .image-column {
