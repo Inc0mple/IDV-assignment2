@@ -1,29 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // First, handle the critique point highlights (keeping existing functionality)
   const critiquePoints = document.querySelectorAll(".critique-point");
 
-  // EXAMPLE SHAPE DEFINITIONS:
-  // Each data-target can hold an ARRAY of shape definitions.
-  // We'll add a "polygon" example in oil-region2 to demonstrate.
+  // HIGHLIGHTDEFS OBJECT (EXISTING CODE)
   const highlightDefs = {
     "oil-region1": [
-      // {
-      //   shape: "circle",
-      //   x: 587,
-      //   y: 748,
-      //   r: 230,
-      //   fillColor: "rgba(255, 0, 0, 0.1)",
-      //   strokeColor: "red",
-      //   strokeWidth: 3,
-      // },
-      // {
-      //   shape: "circle",
-      //   x: 755,
-      //   y: 1165,
-      //   r: 220,
-      //   fillColor: "rgba(255, 0, 0, 0.1)",
-      //   strokeColor: "red",
-      //   strokeWidth: 3,
-      // }
       {
         shape: "polygon",
         points: [
@@ -54,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         strokeColor: "yellow",
         strokeWidth: 3
       }
-      
     ],
     "oil-region2": [
       {
@@ -99,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     ],
     "oil-region4": [
-      
       {
         shape: "polygon",
         points: [
@@ -219,8 +198,8 @@ document.addEventListener("DOMContentLoaded", () => {
           { x: 1180, y: 893 },
           { x: 1180, y: 1110 },
           { x: 489, y: 771 },
-          { x: 282, y: 450 }, // prev y is 496
-          { x: 21, y: 450 }, // prev y is 496
+          { x: 282, y: 450 },
+          { x: 21, y: 450 },
         ],
         fillColor: "rgba(255, 183, 0, 0.05)", 
         strokeColor: "yellow",
@@ -241,6 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
   };
 
+  // Existing event handlers for critique points
   critiquePoints.forEach((point) => {
     point.addEventListener("mouseenter", () => {
       const targetRegion = point.getAttribute("data-target");
@@ -371,4 +351,57 @@ document.addEventListener("DOMContentLoaded", () => {
       point._currentShapes = null;
     });
   });
+
+  // NEW CODE: Handle sticky image scrolling
+  const imageColumns = document.querySelectorAll('.image-column');
+  
+  // Get all the example containers to determine where to stop sticking
+  const exampleContainers = document.querySelectorAll('.example-container');
+  
+  // Function to handle scroll
+  function handleScroll() {
+    // For each image column
+    imageColumns.forEach((column, index) => {
+      const imageWrapper = column.querySelector('.image-wrapper');
+      const containerRect = exampleContainers[index].getBoundingClientRect();
+      
+      // Get the height of the current image wrapper
+      const imageHeight = imageWrapper.offsetHeight;
+      
+      // Get the container top and bottom positions
+      const containerTop = containerRect.top;
+      const containerBottom = containerRect.bottom;
+      
+      // Check if we should make the image sticky
+      if (containerTop <= 0 && containerBottom >= imageHeight) {
+        // Container top has scrolled past the viewport top,
+        // and the container bottom is still below the image height
+        imageWrapper.style.position = 'fixed';
+        imageWrapper.style.top = '0';
+        imageWrapper.style.width = column.offsetWidth + 'px';
+        imageWrapper.style.zIndex = '10';
+      } 
+      // If we're near the bottom of the container, position absolute
+      else if (containerBottom < imageHeight) {
+        imageWrapper.style.position = 'absolute';
+        imageWrapper.style.top = (containerRect.height - imageHeight) + 'px';
+        imageWrapper.style.width = column.offsetWidth + 'px';
+      } 
+      // Otherwise, return to normal flow
+      else {
+        imageWrapper.style.position = 'relative';
+        imageWrapper.style.top = '0';
+        imageWrapper.style.width = '100%';
+      }
+    });
+  }
+
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScroll);
+  
+  // Call once on load to set initial state
+  handleScroll();
+  
+  // Update on window resize to handle responsive layout changes
+  window.addEventListener('resize', handleScroll);
 });

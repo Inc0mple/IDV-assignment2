@@ -23,26 +23,29 @@ h1 {
   margin: 20px;
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
+  position: relative; /* Make sure this container has a position context */
+  min-height: 600px; /* Ensure container is tall enough for scrolling */
 }
 
 .text-column {
   flex: 1;
-  max-width: 700px;
+  max-width: 1000px;
   padding-right: 5px;
 }
 
 .image-column {
-  flex: 1.5;
-  min-width: 300px;
+  flex: 1;
+  min-width: 200px;
+  position: relative; /* Important for positioning context */
 }
 
 /* Wrapping the image + overlay */
 .image-wrapper {
-  position: relative;
   margin: 0 auto;
   width: 100%;
-  max-width: 1000px; /* Limit how large the image can get */
+  max-width: 700px; /* Limit how large the image can get */
   overflow: hidden;
+  /* The sticky behavior is controlled via JS */
 }
 
 /* Make the image scale up to fill container's width, but maintain aspect ratio */
@@ -86,4 +89,9 @@ ul {
 .critique-point:hover {
   background-color: #fcf8e3;
   transition: background-color 0.3s;
+}
+
+/* Add sufficient padding at the bottom to ensure scrolling */
+body {
+  padding-bottom: 50px;
 }
