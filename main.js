@@ -352,56 +352,59 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // NEW CODE: Handle sticky image scrolling
-  const imageColumns = document.querySelectorAll('.image-column');
-  
-  // Get all the example containers to determine where to stop sticking
-  const exampleContainers = document.querySelectorAll('.example-container');
-  
-  // Function to handle scroll
+  const imageColumns = document.querySelectorAll(".image-column");
+  const exampleContainers = document.querySelectorAll(".example-container");
+
+  // Capture each image-wrapper's height once (assuming it doesn’t dynamically change height later)
+  const imageHeights = [];
+  imageColumns.forEach((column, idx) => {
+    const wrapper = column.querySelector(".image-wrapper");
+    imageHeights[idx] = wrapper.offsetHeight;
+    // Add a CSS transition on transform for smooth movement
+    wrapper.style.transition = "transform 0.2s ease-out";
+    // Make sure wrapper is positioned (e.g. relative) so transform works as intended
+    wrapper.style.position = "relative";
+  });
+
   function handleScroll() {
-    // For each image column
-    imageColumns.forEach((column, index) => {
-      const imageWrapper = column.querySelector('.image-wrapper');
-      const containerRect = exampleContainers[index].getBoundingClientRect();
-      
-      // Get the height of the current image wrapper
-      const imageHeight = imageWrapper.offsetHeight;
-      
-      // Get the container top and bottom positions
-      const containerTop = containerRect.top;
-      const containerBottom = containerRect.bottom;
-      
-      // Check if we should make the image sticky
-      if (containerTop <= 0 && containerBottom >= imageHeight) {
-        // Container top has scrolled past the viewport top,
-        // and the container bottom is still below the image height
-        imageWrapper.style.position = 'fixed';
-        imageWrapper.style.top = '0';
-        imageWrapper.style.width = column.offsetWidth + 'px';
-        imageWrapper.style.zIndex = '10';
-      } 
-      // If we're near the bottom of the container, position absolute
-      else if (containerBottom < imageHeight) {
-        imageWrapper.style.position = 'absolute';
-        imageWrapper.style.top = (containerRect.height - imageHeight) + 'px';
-        imageWrapper.style.width = column.offsetWidth + 'px';
-      } 
-      // Otherwise, return to normal flow
-      else {
-        imageWrapper.style.position = 'relative';
-        imageWrapper.style.top = '0';
-        imageWrapper.style.width = '100%';
+    imageColumns.forEach((column, idx) => {
+      const containerRect = exampleContainers[idx].getBoundingClientRect();
+      const wrapper = column.querySelector(".image-wrapper");
+
+      const scrollY = window.scrollY || window.pageYOffset;
+      const imageHeight = imageHeights[idx];
+      const containerTopAbs = containerRect.top + scrollY;
+      const containerHeight = containerRect.height;
+
+      // How far we've scrolled into this container
+      let scrolledInto = scrollY - containerTopAbs;
+      if (scrolledInto < 0) {
+        scrolledInto = 0; // not yet reached the container
       }
+
+      // The maximum offset so image bottom never passes container bottom
+      let maxOffset = containerHeight - imageHeight;
+      // If container is shorter than the image, maxOffset can go negative.
+      // We'll clamp it to zero so the image won't move at all in that case.
+      if (maxOffset < 0) {
+        maxOffset = 0;
+      }
+
+      // Our desired translation is how far into the container we've scrolled,
+      // but capped so we never exceed maxOffset.
+      let translateY = Math.min(scrolledInto, maxOffset);
+      if (translateY < 0) {
+        translateY = 0;
+      }
+
+      // Apply the transform to smoothly slide the image
+      wrapper.style.transform = `translateY(${translateY}px)`;
     });
   }
 
-  // Add scroll event listener
-  window.addEventListener('scroll', handleScroll);
-  
-  // Call once on load to set initial state
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll);
+
+  // Run on load
   handleScroll();
-  
-  // Update on window resize to handle responsive layout changes
-  window.addEventListener('resize', handleScroll);
 });
